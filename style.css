@@ -1,0 +1,37 @@
+body{
+    text-align: center;
+    /* background: radial-gradient(circle at center, #1e3c72, #2a5298, #202020); */
+    /* background: linear-gradient(to right, #ff5f6d, #ffc371); */
+    /* background: radial-gradient(circle, #ffafbd, #ffc3a0); */
+    
+}
+.btn{
+    height: 200px;
+    width: 200px;
+    border-radius: 20%;
+    border: 10px solid black;
+    margin: 2.3rem;
+}
+.btn-container{
+    display: flex;
+    justify-content: center;
+}
+.yellow{
+    background-color: #f99b45;
+}
+.red{
+    background-color:#d95980;
+}
+.green{
+    background-color: #819ff9;
+}
+.purple{
+    background-color: #63aac0;
+}
+
+.flash{
+    background-color: white;
+}
+.userFlash{
+    background-color: green;
+}
