@@ -65,12 +65,23 @@ function checkAns(idx){
      setTimeout(levelUp,1000);
     }
   }else{
-    h2.innerHTML=`game over ! Your score was <b>${level}</b><br> Press any key to start.`;
+    h2.innerHTML=`game over ! Your score was <b>${level}</b><br> Press any key or tap to start.`;
     document.querySelector("body").style.backgroundColor="red";
     setTimeout(function(){
       document.querySelector("body").style.background="white";
     },150);
     reset();
+    // Enable restart on keypress or touchstart
+    let restartHandler = function(){
+      if(!started){
+        started=true;
+        levelUp();
+        document.removeEventListener("keypress", restartHandler);
+        document.removeEventListener("touchstart", restartHandler);
+      }
+    };
+    document.addEventListener("keypress", restartHandler);
+    document.addEventListener("touchstart", restartHandler);
   }
 }
 
