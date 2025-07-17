@@ -46,7 +46,7 @@ function levelUp(){
   h2.innerText=`Level ${level}`;
 
   //random button choose
-  let randIdx=Math.floor(Math.random()*3);
+  let randIdx=Math.floor(Math.random()*btns.length);
   let randColor=btns[randIdx];
   let randBtn=document.querySelector(`.${randColor}`);
   // console.log(randIdx);
@@ -65,23 +65,12 @@ function checkAns(idx){
      setTimeout(levelUp,1000);
     }
   }else{
-    h2.innerHTML=`game over ! Your score was <b>${level}</b><br> Press any key or tap to start.`;
+    h2.innerHTML=`game over ! Your score was <b>${level}</b><br> Press any key to start.`;
     document.querySelector("body").style.backgroundColor="red";
     setTimeout(function(){
       document.querySelector("body").style.background="white";
     },150);
     reset();
-    // Enable restart on keypress or touchstart
-    let restartHandler = function(){
-      if(!started){
-        started=true;
-        levelUp();
-        document.removeEventListener("keypress", restartHandler);
-        document.removeEventListener("touchstart", restartHandler);
-      }
-    };
-    document.addEventListener("keypress", restartHandler);
-    document.addEventListener("touchstart", restartHandler);
   }
 }
 
@@ -90,7 +79,7 @@ function btnPress(){
  let btn = this;
  userFlash(btn);
 
- userColor= btn.getAttribute("id");
+ let userColor= btn.getAttribute("id");
  userSeq.push(userColor);
 
  checkAns(userSeq.length-1);
