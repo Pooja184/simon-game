@@ -16,6 +16,16 @@ document.addEventListener("keypress",function(){
   }
 });
 
+// Also start game on first touch for mobile
+if ('ontouchstart' in window) {
+  document.addEventListener("touchstart", function(){
+    if(started==false){
+      started=true;
+      levelUp();
+    }
+  }, {once:true});
+}
+
 function gameFlash(btn){
    btn.classList.add("flash")
    setTimeout(function(){
@@ -76,8 +86,12 @@ function btnPress(){
 }
 
 let allBtns= document.querySelectorAll(".btn");
-for (btn of allBtns){
+for (let btn of allBtns){
   btn.addEventListener("click",btnPress);
+  btn.addEventListener("touchstart", function(e) {
+    e.preventDefault();
+    btnPress.call(this);
+  });
 }
 
 function reset(){
